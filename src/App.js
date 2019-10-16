@@ -4,8 +4,7 @@ import profileImg from './assets/codewars-profile-image.jpeg';
 
 const App = () => {
  
-    const [setErrors] = useState(false);
-    const [codewarsData, setCodewarsData] = useState([]);
+    const [codewarsData, setCodewarsData] = useState({});
     const API = `https://www.codewars.com/api/v1/users/danlubbers`;
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     
@@ -14,14 +13,22 @@ const App = () => {
         const res = await fetch(proxyurl + API)
             res.json()
             .then(data => setCodewarsData(data))
-            .catch(err => setErrors(err));
+            .catch(err => console.log(err));
       }
       fetchData()
-    }, [API, setErrors]);
+    }, [API]);
 
     // I want to access codewarsData.ranks.overall.name but anything after ranks gives "Uncaught TypeError: Cannot read property 'overall' of undefined"
+    console.log(codewarsData);
+    
+    // Looping over Object
+    Object.keys(codewarsData).map(key => {
+      return codewarsData[key];
+    })
+    
+    // Still can't get 'codewarsData.ranks.overall'
     console.log(codewarsData.ranks);
-  
+
       return (
       <div className="App">
         <section>
