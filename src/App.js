@@ -12,8 +12,8 @@ const App = () => {
       async function fetchData() {
         const res = await fetch(proxyurl + API)
             res.json()
-            .then(data => setCodewarsData(data))
-            .catch(err => console.log(err));
+            .then(res => setCodewarsData(res))
+            .catch(err => console.log('ERROR: ', err));
       }
       fetchData()
     }, [API]);
@@ -26,8 +26,11 @@ const App = () => {
       return codewarsData[key];
     })
     
-    // Still can't get 'codewarsData.ranks.overall'
-    console.log(codewarsData.ranks);
+    // If statement solved the Uncaught TypeError listed on line 21
+    // On page render codewarsData.ranks is an empty object, the if statement checks so that it will log data only after the data has rendered and is truthy
+    if(codewarsData.ranks){
+      console.log(codewarsData.ranks.overall.name)
+    }
 
       return (
       <div className="App">
@@ -37,7 +40,7 @@ const App = () => {
             <span>
               <div className='rank-name-wrapper'>
                 {/* This is where I want to use 'codewarsData.ranks.overall.name' */}
-                <h2 className='kyu'>{}kyu</h2> 
+                <h2 className='kyu'>{codewarsData.ranks && codewarsData.ranks.overall.name}</h2> 
                 <h2>{codewarsData.username}</h2>
               </div>
               <h2 className='honor'>{codewarsData.honor}</h2>
