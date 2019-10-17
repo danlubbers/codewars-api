@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.scss';
 import profileImg from './assets/codewars-profile-image.jpeg';
+import graphicHeader from './assets/codewars-header-graphic.png';
 
 const App = () => {
  
@@ -35,15 +36,16 @@ const App = () => {
       return (
       <div className="App">
         <section>
-        <img className='image' src={profileImg} alt='Dan Lubbers'/>
+        <a href='https://www.codewars.com/users/danlubbers/' target='_blank' rel="noopener noreferrer"><img className='profile-image' src={profileImg} alt='Dan Lubbers'/></a>
           <div className='text-wrapper'>
             <span>
+              <img className='graphic-header' src={graphicHeader} alt='header'/>
               <div className='rank-name-wrapper'>
                 {/* This is where I want to use 'codewarsData.ranks.overall.name' */}
                 <h2 className='kyu'>{codewarsData.ranks && codewarsData.ranks.overall.name}</h2> 
                 <h2>{codewarsData.username}</h2>
+                <h2 className='honor'>{codewarsData.honor}</h2>
               </div>
-              <h2 className='honor'>{codewarsData.honor}</h2>
             </span>
             <article>
               <h2>Name: {codewarsData.name}</h2>
