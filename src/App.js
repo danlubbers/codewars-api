@@ -48,8 +48,8 @@ const App = () => {
               </div>
             </span>
             <article>
-              <h2>Name: {codewarsData.name}</h2>
-              <h2>Clan: {codewarsData.clan}</h2>
+              <span><h2 className='name'>Name: </h2><h2>{codewarsData.name}</h2></span>
+              <span><h2 className='clan'>Clan: </h2><h2>{codewarsData.clan}</h2></span>
             </article>
           </div>
         </section>
