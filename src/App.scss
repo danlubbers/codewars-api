@@ -51,7 +51,6 @@ section {
       h2 {
         padding: 18px 0 0 15px;
         font-size: 18px;
-
       }
 
       .kyu {
@@ -65,6 +64,11 @@ section {
         align-items: center;
         justify-content: flex-end;
         color: #999999;
+      }
+      .codewars-logo {
+        margin: 20px 0 0 10px;
+        padding: 0;
+        width: 40px;
       }
     }
     

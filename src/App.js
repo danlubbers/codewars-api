@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.scss';
 import profileImg from './assets/codewars-profile-image.jpeg';
 import graphicHeader from './assets/codewars-header-graphic.png';
+import codewarsLogo from './assets/codewars-logo-small.png';
 
 const App = () => {
  
@@ -23,15 +24,15 @@ const App = () => {
     console.log(codewarsData);
     
     // Looping over Object
-    Object.keys(codewarsData).map(key => {
-      return codewarsData[key];
-    })
+    // Object.keys(codewarsData).map(key => {
+    //   return codewarsData[key];
+    // })
     
     // If statement solved the Uncaught TypeError listed on line 21
     // On page render codewarsData.ranks is an empty object, the if statement checks so that it will log data only after the data has rendered and is truthy
-    if(codewarsData.ranks){
-      console.log(codewarsData.ranks.overall.name)
-    }
+    // if(codewarsData.ranks){
+    //   console.log(codewarsData.ranks.overall.name)
+    // }
 
       return (
       <div className="App">
@@ -42,9 +43,10 @@ const App = () => {
               <img className='graphic-header' src={graphicHeader} alt='header'/>
               <div className='rank-name-wrapper'>
                 {/* This is where I want to use 'codewarsData.ranks.overall.name' */}
+                {/* Using the short circuit method we check if codewars.ranks is true, then when it is, it will display the nested information I'm wanting to retrieve */}
                 <h2 className='kyu'>{codewarsData.ranks && codewarsData.ranks.overall.name}</h2> 
                 <h2>{codewarsData.username}</h2>
-                <h2 className='honor'>{codewarsData.honor}</h2>
+                <h2 className='honor'>{codewarsData.honor}</h2> <img className='codewars-logo' src={codewarsLogo} alt="codewars-logo"/>
               </div>
             </span>
             <article>
